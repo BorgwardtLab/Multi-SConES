@@ -58,7 +58,7 @@ mscones <- function(g, C, K, X, Y, lambda = .5, eta = .25, mu=1, method="correla
   ## remove isolated vertices
   i <- 1
   for (F in F.list) {
-    g.sub <- induced.subgraph(g, F)
+    g.sub <- induced_subgraph(g, as.integer(F))
     g.d <- degree(g.sub)
     F.list[[i]] <- F[g.d > 0]
     names(F.list)[i] <- paste("selected features for task ", i, sep="")
@@ -166,7 +166,7 @@ scones <- function(g, C, X, Y, lambda = .5, eta = .5, method="correlation") {
     features <- res$partition2[-length(res$partition2)]
   }
   ## remove isolated vertices
-  g.sub <- induced.subgraph(g, features)
+  g.sub <- induced_subgraph(g, features)
   g.d <- degree(g.sub)
   return(features[g.d > 0])
 }
